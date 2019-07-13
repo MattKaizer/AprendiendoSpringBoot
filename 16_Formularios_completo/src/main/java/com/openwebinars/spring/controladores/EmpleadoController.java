@@ -29,7 +29,6 @@ public class EmpleadoController {
 	
 	@Autowired
 	private EmpleadoService servicio;
-	private String imagen;
 	@Autowired
 	private I_StorageService storageService;
 	
@@ -50,14 +49,14 @@ public class EmpleadoController {
 	public String nuevoEmpleadoSubmit(@Valid @ModelAttribute("empleadoForm") 
 	Empleado nuevoEmpleado, BindingResult bindingresult, @RequestParam("file")
 	MultipartFile file) {
+		
 		if (bindingresult.hasErrors()) {
 			return "form";
 		} else {
 			if (!file.isEmpty()) {
 				//Logica de almacenamiento de fichero, es mas seguro que trabajar con cadena de caracteres
 				String avatar = storageService.store(file, nuevoEmpleado.getId());
-				nuevoEmpleado.setImagen(MvcUriComponentsBuilder.fromMethodName(Empleado.class, "serveFile", avatar)
-						.build().toString());
+				nuevoEmpleado.setImagen(MvcUriComponentsBuilder.fromMethodName(EmpleadoController.class, "serveFile", avatar).build().toString());
 			}
 			servicio.add(nuevoEmpleado);
 			return "redirect:/empleado/list";
@@ -88,15 +87,17 @@ public class EmpleadoController {
 	}
 	
 	
-	//
+	/*
+	 * @ResponseBody indica que el metodo devolverá un recurso y no una vista
+	 * es un envoltorio para un fichero de tipo binario.
+	 * @GetMapping: usa una expresion glob, que ademas, asigna el valor a la var filename
+	 */
 	
     @GetMapping("/files/{filename:.+}")
     @ResponseBody
     public ResponseEntity<Resource> serveFile(@PathVariable String filename) {
-
         Resource file = storageService.loadAsResource(filename);
-        return ResponseEntity.ok().header(HttpHeaders.CONTENT_DISPOSITION,
-                "attachment; filename=\"" + file.getFilename() + "\"").body(file);
+        return ResponseEntity.ok().body(file);
     }
 	
 

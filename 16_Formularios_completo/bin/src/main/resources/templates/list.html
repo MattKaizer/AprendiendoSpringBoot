@@ -16,6 +16,8 @@
 <!-- Custom styles for this template -->
 <link href="/css/starter-template.css" rel="stylesheet">
 
+<!-- Fontawesome 5 icons -->
+<link href="/webjars/font-awesome/css/all.min.css" rel="stylesheet">
 
 <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 <!--[if lt IE 9]>
@@ -56,16 +58,21 @@
 				<thead>
 					<tr>
 						<th>ID</th>
+						<th>Avatar</th>
 						<th>Nombre</th>
 						<th>Email</th>
 						<th>Teléfono</th>
+						<th>Operaciones</th>
 				</thead>
 				<tbody>
 					<tr th:each="empleado : ${listaEmpleados}">
 						<td th:text="${empleado.id}">ID</td>
+						<td><img th:src="@{${empleado.imagen}} ?: 'https://api.adorable.io/avatars/64/{email}.png'(email=${empleado.email})}" 
+						width="64px" alt="avatar" /></td>
 						<td th:text="${empleado.nombre}">Pepe Pérez</td>
 						<td th:text="${empleado.email}">pepe.perez@openwebinars.net</td>
 						<td th:text="${empleado.telefono}">954000000</td>
+						<td><a th:href="@{/empleado/edit/{id}(id=${empleado.id})}"><i class="far fa-edit"></i></a></td>
 					</tr>
 				</tbody>
 			</table>

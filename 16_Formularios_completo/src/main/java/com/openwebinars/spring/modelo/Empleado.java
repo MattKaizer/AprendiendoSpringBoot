@@ -15,9 +15,7 @@ public class Empleado {
 	private String telefono;
 	private String imagen;
 	
-	public Empleado() { }
-
-
+	public Empleado() {}
 
 	public Empleado(@Min(value = 0, message = "{empleado.id.mayorquecero}") long id, @NotEmpty String nombre,
 			@Email String email, String telefono) {
@@ -25,6 +23,16 @@ public class Empleado {
 		this.nombre = nombre;
 		this.email = email;
 		this.telefono = telefono;
+	}
+
+
+	public Empleado(@Min(value = 0, message = "{empleado.id.mayorquecero}") long id, @NotEmpty String nombre,
+			@Email String email, String telefono, String imagen) {
+		this.id = id;
+		this.nombre = nombre;
+		this.email = email;
+		this.telefono = telefono;
+		this.imagen = imagen;
 	}
 
 
@@ -123,14 +131,10 @@ public class Empleado {
 
 	@Override
 	public String toString() {
-		return "Empleado [id=" + id + ", nombre=" + nombre + ", email=" + email + ", telefono=" + telefono + "]";
+		return "Empleado [id=" + id + ", nombre=" + nombre + ", email=" + email + ", telefono=" + telefono + ", imagen="
+				+ imagen + "]";
 	}
 
-	
-	
-	
-	
-	
 
 	
 }

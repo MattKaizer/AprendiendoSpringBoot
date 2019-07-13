@@ -84,8 +84,16 @@
 								th:field="*{telefono}" />
 						</div>
 						<div class="form-group">
-							<label for="file">Avatar</label> <input type="file"
-								class="form-control input-file" id="telefono" />
+							<label for="file">Avatar</label> <input id="filebutton"
+								name="file" class="form-control input-file" type="file" />
+						</div>
+						<div class="form-group">
+							<figure class="figure">
+								<img class="img-fluid img-thumbnail float-left" src=""
+									th:src="@{${empleadoForm.imagen} ?: 'https://api.adorable.io/avatars/64/{email}.png'
+						(email=${empleadoForm.email})}"
+									width="64px" alt="avatar" />
+							</figure>
 						</div>
 						<button type="submit" class="btn btn-default">Enviar</button>
 

@@ -67,8 +67,8 @@
 				<tbody>
 					<tr th:each="empleado : ${listaEmpleados}">
 						<td th:text="${empleado.id}">ID</td>
-						<td><img th:src="@{${empleado.imagen}} ?: 'https://api.adorable.io/avatars/64/{email}.png'(email=${empleado.email})}" 
-						width="64px" alt="avatar" /></td>
+						<td><img src="" th:src="@{${empleado.imagen} ?: 'https://api.adorable.io/avatars/64/{email}.png'
+						(email=${empleado.email})}" width="64px" alt="avatar" /></td>
 						<td th:text="${empleado.nombre}">Pepe Pérez</td>
 						<td th:text="${empleado.email}">pepe.perez@openwebinars.net</td>
 						<td th:text="${empleado.telefono}">954000000</td>
