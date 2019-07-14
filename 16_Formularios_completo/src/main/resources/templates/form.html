@@ -44,8 +44,8 @@
      
         <ul class="nav-item navbar-nav navbar-right">
 			<li class="dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Menu
-            <span class="caret"></span></a>
+            <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <span th:text="${#authentication.name}">Menu</span><span class="caret"></span></a>
             <div class="dropdown-menu" aria-labelledby="dropdown01">
               <a class="dropdown-item" href="javascript: document.querySelector('#logoutForm').submit()">Salir</a>
             </div>
@@ -110,7 +110,7 @@
 				</div>
 
 			</div>
-		</div>
+
 
 
 
