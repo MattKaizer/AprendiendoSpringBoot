@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 
 import com.openwebinars.spring.modelo.Empleado;
 
-@Service("EmpleadoServiceInMemory")
+@Service("empleadoServiceInMemory")
 public class EmpleadoServiceInMemory {
 	
 	private List<Empleado> repositorio = new ArrayList<>();
