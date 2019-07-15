@@ -21,14 +21,14 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.method.annotation.MvcUriComponentsBuilder;
 
 import com.openwebinars.spring.modelo.Empleado;
-import com.openwebinars.spring.servicios.EmpleadoService;
+import com.openwebinars.spring.servicios.EmpleadoServiceInMemory;
 import com.openwebinars.spring.upload.storage.I_StorageService;
 
 @Controller
 public class EmpleadoController {
 	
 	@Autowired
-	private EmpleadoService servicio;
+	private EmpleadoServiceInMemory servicio;
 	@Autowired
 	private I_StorageService storageService;
 	
