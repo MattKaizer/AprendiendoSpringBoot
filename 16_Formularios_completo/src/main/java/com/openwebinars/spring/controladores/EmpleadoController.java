@@ -35,8 +35,9 @@ public class EmpleadoController {
 	
 	
 	@GetMapping({"/", "empleado/list"})
-	public String listado(Model model) {
-		model.addAttribute("listaEmpleados", servicio.findAll());
+	public String listado(Model model, @RequestParam(name="q", required=false) String query) {
+		List<Empleado> resultado = (query == null) ? servicio.findAll() : servicio.buscador(query);
+		model.addAttribute("listaEmpleados", resultado);
 		return "list";
 	}
 	
