@@ -41,4 +41,12 @@ public class EmpleadoServiceDB implements EmpleadoService {
 		return repositorio.save(e);
 	}
 
+	@Override
+	public List<Empleado> buscador(String cadena) {
+		// TODO Auto-generated method stub
+		return repositorio.findByNombreContainsIgnoreCaseOrEmailContainsIgnoreCaseOrTelefonoContains(cadena, cadena, cadena);
+	}
+	
+
+
 }
