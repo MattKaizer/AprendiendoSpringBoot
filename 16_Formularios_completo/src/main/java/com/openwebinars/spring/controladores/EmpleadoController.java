@@ -66,7 +66,7 @@ public class EmpleadoController {
 	
 	@GetMapping("/empleado/edit/{id}")
 	public String editEmpleadoForm(@PathVariable long id, Model model) {
-		Empleado empleado = servicio.findByID(id);
+		Empleado empleado = servicio.findById(id);
 		if (empleado != null) {
 			model.addAttribute("empleadoForm", empleado);
 			return "form";
