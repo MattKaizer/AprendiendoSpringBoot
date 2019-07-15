@@ -32,7 +32,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http.authorizeRequests()
-				.antMatchers("/webjars/**", "/css/**").permitAll()
+				.antMatchers("/webjars/**", "/css/**", "h2/console/**").permitAll()
 				.anyRequest().authenticated()
 				.and()
 			.formLogin()
@@ -41,6 +41,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 				.and()
 	        .logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout")).logoutSuccessUrl("/login")
 	        .and().exceptionHandling().accessDeniedPage("/accessDenied");
+	        http.csrf().disable();
+	        http.headers().frameOptions().disable();
 			
 	}
 	
