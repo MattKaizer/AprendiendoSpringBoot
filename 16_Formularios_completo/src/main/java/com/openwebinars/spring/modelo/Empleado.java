@@ -12,7 +12,9 @@ import javax.validation.constraints.NotEmpty;
 public class Empleado {
 	
 	@Id @GeneratedValue
-	@Min(value=0, message="{empleado.id.mayorquecero}")
+	/*Esto ya no es necesario xq ahora es autogenerada
+	 * @Min(value=0, message="{empleado.id.mayorquecero}")
+	 */
 	private long id;
 	@Column(nullable=false)
 	@NotEmpty
