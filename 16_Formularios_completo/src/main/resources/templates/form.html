@@ -67,7 +67,7 @@
 						<h1
 							th:text="${empleadoForm.id != 0} ? 'Editar Empleado' : 'Nuevo Empleado'">Nuevo
 							empleado</h1>
-						<div class="form-group"
+						<div class="form-group idField"
 							th:classappend="${#fields.hasErrors('id')} ? 'has-error'">
 							<label for="id">ID</label> <input type="text"
 								class="form-control" id="id" placeholder="1" th:field="*{id}"
