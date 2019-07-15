@@ -41,6 +41,13 @@ public class Empleado {
 		this.telefono = telefono;
 		this.imagen = imagen;
 	}
+	
+	//Constructor que no tenga id, ya que va a ser autogenerado por la BD
+	public Empleado(@NotEmpty String nombre, @Email String email, String telefono) {
+		this.nombre = nombre;
+		this.email = email;
+		this.telefono = telefono;
+	}
 
 
 
