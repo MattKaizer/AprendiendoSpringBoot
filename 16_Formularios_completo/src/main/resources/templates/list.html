@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="es" xmlns:th="http://www.thymeleaf.org"
-				xmls:th="http://www.thymeleaf.org/extras/spring-security">
+	xmls:th="http://www.thymeleaf.org/extras/spring-security">
 <head>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -29,34 +29,45 @@
 
 <body>
 
-    <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
-      <a class="navbar-brand" href="/">Miempresa.com</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
+	<nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+		<a class="navbar-brand" href="/">Miempresa.com</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse"
+			data-target="#navbarsExampleDefault"
+			aria-controls="navbarsExampleDefault" aria-expanded="false"
+			aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
 
-      <div class="collapse navbar-collapse" id="navbarsExampleDefault">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="/">Inicio <span class="sr-only">(current)</span></a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/empleado/new">Nuevo Empleado</a>
-          </li>
-        </ul>
-        <ul class="nav-item navbar-nav navbar-right">
-			<li class="dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <span th:text="${#authentication.name}">Menu</span><span class="caret"></span></a>
-            <div class="dropdown-menu" aria-labelledby="dropdown01">
-              <a class="dropdown-item" href="javascript: document.getElementById('logoutForm').submit()">Salir</a>
-            </div>
-          </li></ul>
-        </div>
-    </nav>
-	
+		<div class="collapse navbar-collapse" id="navbarsExampleDefault">
+			<ul class="navbar-nav mr-auto">
+				<li class="nav-item active"><a class="nav-link" href="/">Inicio
+						<span class="sr-only">(current)</span>
+				</a></li>
+				<li class="nav-item"><a class="nav-link" href="/empleado/new">Nuevo
+						Empleado</a></li>
+			</ul>
+
+			<form class="form-inline my-2 my-lg-0">
+				<input class="form-control mr-sm-2" type="text" placeholder="Search"
+					aria-label="Search" name="q" th:value="${param.q}">
+				<!-- <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>-->
+			</form>
+
+			<ul class="nav-item navbar-nav navbar-right">
+				<li class="dropdown"><a class="nav-link dropdown-toggle"
+					href="#" id="dropdown01" data-toggle="dropdown"
+					aria-haspopup="true" aria-expanded="false"> <span
+						th:text="${#authentication.name}">Menu</span><span class="caret"></span></a>
+					<div class="dropdown-menu" aria-labelledby="dropdown01">
+						<a class="dropdown-item"
+							href="javascript: document.getElementById('logoutForm').submit()">Salir</a>
+					</div></li>
+			</ul>
+		</div>
+	</nav>
+
 	<form th:action="@{/logout}" method="post" id="logoutForm"></form>
-	
+
 	<div class="container">
 
 		<div class="starter-template">
@@ -74,12 +85,15 @@
 				<tbody>
 					<tr th:each="empleado : ${listaEmpleados}">
 						<td th:text="${empleado.id}">ID</td>
-						<td><img src="" th:src="@{${empleado.imagen} ?: 'https://api.adorable.io/avatars/64/{email}.png'
-						(email=${empleado.email})}" width="64px" alt="avatar" /></td>
+						<td><img src=""
+							th:src="@{${empleado.imagen} ?: 'https://api.adorable.io/avatars/64/{email}.png'
+						(email=${empleado.email})}"
+							width="64px" alt="avatar" /></td>
 						<td th:text="${empleado.nombre}">Pepe Pérez</td>
 						<td th:text="${empleado.email}">pepe.perez@openwebinars.net</td>
 						<td th:text="${empleado.telefono}">954000000</td>
-						<td><a th:href="@{/empleado/edit/{id}(id=${empleado.id})}"><i class="far fa-edit"></i></a></td>
+						<td><a th:href="@{/empleado/edit/{id}(id=${empleado.id})}"><i
+								class="far fa-edit"></i></a></td>
 					</tr>
 				</tbody>
 			</table>

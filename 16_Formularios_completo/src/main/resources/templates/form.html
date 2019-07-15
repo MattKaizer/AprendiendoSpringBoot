@@ -26,90 +26,94 @@
 
 <body>
 
-    <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
-      <a class="navbar-brand" href="/">Miempresa.com</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
+	<nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+		<a class="navbar-brand" href="/">Miempresa.com</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse"
+			data-target="#navbarsExampleDefault"
+			aria-controls="navbarsExampleDefault" aria-expanded="false"
+			aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
 
-      <div class="collapse navbar-collapse" id="navbarsExampleDefault">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="/">Inicio <span class="sr-only">(current)</span></a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/empleado/new">Nuevo Empleado</a>
-          </li>       
-        </ul>
-     
-        <ul class="nav-item navbar-nav navbar-right">
-			<li class="dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <span th:text="${#authentication.name}">Menu</span><span class="caret"></span></a>
-            <div class="dropdown-menu" aria-labelledby="dropdown01">
-              <a class="dropdown-item" href="javascript: document.querySelector('#logoutForm').submit()">Salir</a>
-            </div>
-          </li></ul>
-        </div>
-    </nav>
+		<div class="collapse navbar-collapse" id="navbarsExampleDefault">
+			<ul class="navbar-nav mr-auto">
+				<li class="nav-item active"><a class="nav-link" href="/">Inicio
+						<span class="sr-only">(current)</span>
+				</a></li>
+				<li class="nav-item"><a class="nav-link" href="/empleado/new">Nuevo
+						Empleado</a></li>
+			</ul>
 
-	
-	<form th:action="@{/logout}" method="post" id="logoutForm"></form> 
+			<ul class="nav-item navbar-nav navbar-right">
+				<li class="dropdown"><a class="nav-link dropdown-toggle"
+					href="#" id="dropdown01" data-toggle="dropdown"
+					aria-haspopup="true" aria-expanded="false"> <span
+						th:text="${#authentication.name}">Menu</span><span class="caret"></span></a>
+					<div class="dropdown-menu" aria-labelledby="dropdown01">
+						<a class="dropdown-item"
+							href="javascript: document.querySelector('#logoutForm').submit()">Salir</a>
+					</div></li>
+			</ul>
+		</div>
+	</nav>
+
+
+	<form th:action="@{/logout}" method="post" id="logoutForm"></form>
 
 	<main role="main" class="container-fluid">
 
-		<div class="row justify-content-center">
+	<div class="row justify-content-center">
 
-				<div class="col-md-6 col-lg-8 text-center p-5">
-					<form method="post" enctype="multipart/form-data" action="#"
-						th:action="${empleadoForm.id != 0} ? @{/empleado/edit/submit} : @{/empleado/new/submit}"
-						th:object="${empleadoForm}">
-						<h1
-							th:text="${empleadoForm.id != 0} ? 'Editar Empleado' : 'Nuevo Empleado'">Nuevo
-							empleado</h1>
-						<div class="form-group idField"
-							th:classappend="${#fields.hasErrors('id')} ? 'has-error'">
-							<label for="id">ID</label> <input type="text"
-								class="form-control" id="id" placeholder="1" th:field="*{id}"
-								th:attrappend="readonly=${empleadoForm.id != 0} ? 'readonly' : null">
-							<span th:if="${#fields.hasErrors('id')}" th:errors="*{id}"
-								class="help-block" id="id-error">Errores</span>
-						</div>
-
-						<div class="form-group">
-							<label for="nombre">Nombre</label> <input type="text"
-								class="form-control" id="nombre" placeholder="Nombre"
-								th:field="*{nombre}" />
-						</div>
-						<div class="form-group">
-							<label for="email">Email</label> <input type="email"
-								class="form-control" id="email"
-								placeholder="emple@openwebinars.net" th:field="*{email}" />
-						</div>
-						<div class="form-group">
-							<label for="telefono">Teléfono</label> <input type="tel"
-								class="form-control" id="telefono" placeholder="954000000"
-								th:field="*{telefono}" />
-						</div>
-						<div class="form-group">
-							<label for="file">Avatar</label> <input id="filebutton"
-								name="file" class="form-control input-file" type="file" />
-						</div>
-						<div class="form-group">
-							<figure class="figure">
-								<img class="img-fluid img-thumbnail float-left" src=""
-									th:src="@{${empleadoForm.imagen} ?: 'https://api.adorable.io/avatars/64/{email}.png'
-						(email=${empleadoForm.email})}"
-									width="64px" alt="avatar" />
-							</figure>
-						</div>
-						<button type="submit" class="btn btn-primary">Enviar</button>
-
-					</form>
-
+		<div class="col-md-6 col-lg-8 text-center p-5">
+			<form method="post" enctype="multipart/form-data" action="#"
+				th:action="${empleadoForm.id != 0} ? @{/empleado/edit/submit} : @{/empleado/new/submit}"
+				th:object="${empleadoForm}">
+				<h1
+					th:text="${empleadoForm.id != 0} ? 'Editar Empleado' : 'Nuevo Empleado'">Nuevo
+					empleado</h1>
+				<div class="form-group idField"
+					th:classappend="${#fields.hasErrors('id')} ? 'has-error'">
+					<label for="id">ID</label> <input type="text" class="form-control"
+						id="id" placeholder="1" th:field="*{id}"
+						th:attrappend="readonly=${empleadoForm.id != 0} ? 'readonly' : null">
+					<span th:if="${#fields.hasErrors('id')}" th:errors="*{id}"
+						class="help-block" id="id-error">Errores</span>
 				</div>
 
-			</div>
+				<div class="form-group">
+					<label for="nombre">Nombre</label> <input type="text"
+						class="form-control" id="nombre" placeholder="Nombre"
+						th:field="*{nombre}" />
+				</div>
+				<div class="form-group">
+					<label for="email">Email</label> <input type="email"
+						class="form-control" id="email"
+						placeholder="emple@openwebinars.net" th:field="*{email}" />
+				</div>
+				<div class="form-group">
+					<label for="telefono">Teléfono</label> <input type="tel"
+						class="form-control" id="telefono" placeholder="954000000"
+						th:field="*{telefono}" />
+				</div>
+				<div class="form-group">
+					<label for="file">Avatar</label> <input id="filebutton" name="file"
+						class="form-control input-file" type="file" />
+				</div>
+				<div class="form-group">
+					<figure class="figure">
+						<img class="img-fluid img-thumbnail float-left" src=""
+							th:src="@{${empleadoForm.imagen} ?: 'https://api.adorable.io/avatars/64/{email}.png'
+						(email=${empleadoForm.email})}"
+							width="64px" alt="avatar" />
+					</figure>
+				</div>
+				<button type="submit" class="btn btn-primary">Enviar</button>
+
+			</form>
+
+		</div>
+
+	</div>
 
 
 
