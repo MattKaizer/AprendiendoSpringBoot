@@ -45,7 +45,8 @@ public class Application {
 //			repositorio.save(empleado2);
 //			
 //			repositorio.findAll().forEach(System.out::println);
-
+			
+//	Salvamos 3 empleados por defecto en la BD
 			repositorio.saveAll(
 					Arrays.asList(new Empleado(1, "Antonio García", "antonio.garcia@openwebinars.net", "954000000"),
 							new Empleado(2, "María López", "maria.lopez@openwebinars.net", "954000000"),
