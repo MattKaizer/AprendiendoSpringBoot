@@ -3,11 +3,13 @@ package com.openwebinars.spring.servicios;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
 
 import com.openwebinars.spring.modelo.Empleado;
 import com.openwebinars.spring.repositorios.EmpleadoRepositorio;
 
+@Primary
 @Service("empleadoServiceDB")
 public class EmpleadoServiceDB implements EmpleadoService {
 	
